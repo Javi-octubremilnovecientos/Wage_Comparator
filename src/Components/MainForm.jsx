@@ -1,4 +1,5 @@
 import React from 'react'
+import "../Styles/mainForm.css"
 
 export const MainForm = () => {
   return (
