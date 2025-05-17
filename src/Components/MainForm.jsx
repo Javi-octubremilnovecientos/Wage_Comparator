@@ -1,20 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../Styles/mainForm.css"
 
-export const MainForm = () => {
+
+
+export const MainForm = ({cuestion, siguiente}) => {
+  const inputs = Object.values(cuestion)
+  const [visible, setvisible] = useState(0)
+
+
+  
+  const handleDiab = ()=>{
+    setvisible(visible + 1)
+    console.log(visible)
+  }
+
+
+
+
   return (
     <form className='main-form'>
-      <label htmlFor="">Profesión</label>
-      <input type="text" />
-      <label htmlFor="">Puesto</label>
-      <input type="text" />
-      <label htmlFor="">Situación laboral</label>
-      <input type="text" />
-      <label htmlFor="">País</label>
-      <input type="text" />
-      <label htmlFor="">Comunidad Autónoma</label>
-      <input type="text" />
-      <button type='submit'>Next</button>
+      {
+        <>
+          {inputs && inputs.map((input, i) => (
+            <div className="inputController"key={i}>
+              <label htmlFor={`input-${i}`}>{i <= visible ? input : ""}</label>
+              <input
+                id={`input-${i}`}
+                type="text"
+                disabled={i <= visible ? false: true}
+                className={i < visible ? "" : "disabled"}
+                onClick={handleDiab}
+               
+              />
+            </div>
+          ))}
+          <button
+            type='submit'
+            onClick={(e) => {
+              e.preventDefault();
+              setvisible(0);
+              siguiente(e);
+            }}
+          >
+            Next
+          </button>
+        </>
+      }
     </form>
   )
 }
