@@ -22,8 +22,9 @@ justify-content: center;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
-    padding: 4%;
+    align-items: start;
+
+    padding-left: 13%;
     box-sizing: border-box;
     border-radius: 6px;
     background-color: #fafafa19;
@@ -33,7 +34,7 @@ justify-content: center;
 
 }
 .main-form input{
-    width: 78%;
+    width: 86%;
     height: 50px;
     border-radius: 6px 6px 0px 0px;
     appearance: none;
@@ -46,6 +47,7 @@ justify-content: center;
     font-size: 1rem;
     
 }
+
 
 input:focus{
     border: none;
