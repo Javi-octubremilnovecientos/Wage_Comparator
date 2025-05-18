@@ -1,45 +1,44 @@
-import React, { useState } from 'react'
-import "../Styles/mainForm.css"
+import React, { useEffect, useState } from "react";
+import "../Styles/mainForm.css";
+import { surveys } from "../Mocks/Survey";
+export const MainForm = () => {
+  const [formNo, setformNo] = useState(0);
+  const [inputNo, setinputNo] = useState(0);
+  const [form, setform] = useState(surveys[formNo]);
 
+  const Next = (e) => {
+    e.preventDefault();
+    setformNo(formNo + 1);
+  };
 
+  useEffect(() => {
+    setform(surveys[formNo]);
+  }, [formNo]);
 
-export const MainForm = ({cuestion, siguiente}) => {
-  const inputs = Object.values(cuestion)
-  const [visible, setvisible] = useState(0)
-
-
-  
-  const handleDiab = ()=>{
-    setvisible(visible + 1)
-    console.log(visible)
-  }
-
-
-
+  const inputs = Object.values(form);
 
   return (
-    <form className='main-form'>
+    <form className="main-form">
       {
         <>
-          {inputs && inputs.map((input, i) => (
-            <div className="inputController"key={i}>
-              <label htmlFor={`input-${i}`}>{i <= visible ? input : ""}</label>
-              <input
-                id={`input-${i}`}
-                type="text"
-                disabled={i <= visible ? false: true}
-                className={i < visible ? "" : "disabled"}
-                onClick={handleDiab}
-               
-              />
-            </div>
-          ))}
+          {inputs &&
+            inputs.map((input, i) => (
+              <div className="inputController" key={i}>
+                <label htmlFor="">{i <= inputNo ? input : ""}</label>
+                <input
+                  name={input}
+                  type="text"
+                  disabled={i <= inputNo ? false : true}
+                  className={i < inputNo ? "" : "disabled"}
+                  onClick={() => setinputNo(inputNo + 1)}
+                />
+              </div>
+            ))}
           <button
-            type='submit'
+          type="submit"
             onClick={(e) => {
-              e.preventDefault();
-              setvisible(0);
-              siguiente(e);
+              Next(e);
+              setinputNo(0);
             }}
           >
             Next
@@ -47,5 +46,5 @@ export const MainForm = ({cuestion, siguiente}) => {
         </>
       }
     </form>
-  )
-}
+  );
+};

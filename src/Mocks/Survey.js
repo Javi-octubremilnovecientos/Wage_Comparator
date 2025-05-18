@@ -1,4 +1,4 @@
-export const survey = [
+export const surveys = [
   {
     label1: "Profesión",
     label2: "Puesto",
@@ -10,20 +10,17 @@ export const survey = [
     label1: "Sexo",
     label2: "Nivel Educativo",
     label3: "Experiencia"
-  
   },
   {
     label1: "Sector",
     label2: "Tamaño empresa",
     label3: "Industria",
     label4: "Tipo de Contrato"
-  
   },
   {
     label1: "Último salario",
     label2: "Beneficios Financieros",
-    label3: "Email",
-  
+    label3: "Email"
   }
- 
 ];
+
