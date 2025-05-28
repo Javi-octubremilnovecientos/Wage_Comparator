@@ -35,7 +35,7 @@ export const MainForm = () => {
               </div>
             ))}
           <button
-          type="submit"
+            type="submit"
             onClick={(e) => {
               Next(e);
               setinputNo(0);
