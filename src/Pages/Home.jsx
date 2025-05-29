@@ -7,11 +7,10 @@ export const Home = () => {
   
   const [started, setstarted] = useState(false);
 
-<<<<<<< HEAD
 // const datos = data;
-=======
+
 // const datos = Survey2019;
->>>>>>> 6304e542710fcb60052ecc63ba987fea5a20158e
+
 
 // const europeos = datos.filter((dato) => 
 //   ["Spain", "France", "Portugal", "Germany","Netherlands"].includes(dato.COUNTRY)
@@ -20,11 +19,11 @@ export const Home = () => {
 
 // const salarios = europeos.map((vet) => {
   
-<<<<<<< HEAD
+
   // console.log(vet.WAGEGR1)
-=======
+
 //   return vet.WAGEGR1 
->>>>>>> 6304e542710fcb60052ecc63ba987fea5a20158e
+
  
 // });
 
