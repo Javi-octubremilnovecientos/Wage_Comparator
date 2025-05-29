@@ -37,7 +37,7 @@ const HandleSubmit = (e) => {
       <div className="inputController" key={i}>
         <label htmlFor="">{i <= inputNo ? input : ""}</label>
         <input
-        required
+          required
           name={input}
           type="text"
           disabled={i <= inputNo ? false : true}
