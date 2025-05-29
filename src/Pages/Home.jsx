@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { MainForm } from "../Components/MainForm";
 
 import { Arrow } from "../assets/Icons/Icons";
-import {data} from "../Mocks/2-Grap-exported-final.js"
+// import {Survey2019} from "../Mocks/2-2019.js"
 export const Home = () => {
   
   const [started, setstarted] = useState(false);
 
+<<<<<<< HEAD
 // const datos = data;
+=======
+// const datos = Survey2019;
+>>>>>>> 6304e542710fcb60052ecc63ba987fea5a20158e
 
 // const europeos = datos.filter((dato) => 
 //   ["Spain", "France", "Portugal", "Germany","Netherlands"].includes(dato.COUNTRY)
@@ -16,7 +20,11 @@ export const Home = () => {
 
 // const salarios = europeos.map((vet) => {
   
+<<<<<<< HEAD
   // console.log(vet.WAGEGR1)
+=======
+//   return vet.WAGEGR1 
+>>>>>>> 6304e542710fcb60052ecc63ba987fea5a20158e
  
 // });
 
