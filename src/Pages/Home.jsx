@@ -7,24 +7,24 @@ export const Home = () => {
   
   const [started, setstarted] = useState(false);
 
-const datos = data;
+// const datos = data;
 
-const europeos = datos.filter((dato) => 
-  ["Spain", "France", "Portugal", "Germany","Netherlands"].includes(dato.COUNTRY)
-);
+// const europeos = datos.filter((dato) => 
+//   ["Spain", "France", "Portugal", "Germany","Netherlands"].includes(dato.COUNTRY)
+// );
 
 
-const salarios = europeos.map((vet) => {
+// const salarios = europeos.map((vet) => {
   
-  console.log(vet.WAGEGR1)
+  // console.log(vet.WAGEGR1)
  
-});
+// });
 
-const totalSalario = salarios.reduce((acc, curr) => acc + curr, 0);
+// const totalSalario = salarios.reduce((acc, curr) => acc + curr, 0);
 
- const media = totalSalario / salarios.length
+//  const media = totalSalario / salarios.length
 
-console.log(media);
+// console.log(media);
 
 
   return (
