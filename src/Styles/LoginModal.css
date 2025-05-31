@@ -1,25 +1,77 @@
 
 .LoginModal{
    position: relative; 
+   display: none;
    top:13%;
    height: 94%;
-   width: 79%;
+   width: 86%;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   border: 1px dotted green;
-   background-color: blue;
+    background-color: #fafafa39;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0px 0px 39px 12px rgba(#597bff);
+   
+   
+   border-radius: 6px;
+}
+.close{
+    position: relative;
+    left: 38%;
+    background-color: transparent;
+    font-size: 1.8rem;
+    border: none;
 }
 .LoginModal form{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    width: 89%;
+    width: 99%;
     padding: 7%;
+    align-items: center;
+    font-size: 1.2rem;
 }
+.LoginModal form input{
+   margin-bottom: 5%;
+   margin-top: 2%;
+   font-size: 1.1rem;
+   background-color: rgb(255, 255, 255);
+   border: none;
+   border-radius: 6px;
+}
+
+.LoginModal form button{
+    width: 24%;
+    border: 0px transparent;
+    border-radius: 6px;
+    background-color: #7ea3ff;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 8px;
+
+}
+
 .overlay{
 position: absolute;
-top:0;
+
+top:41%;
 left:0;
+height: 59%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index:10;
+background-color: rgba(240, 255, 255, 0.565);
+backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+border-radius: 6px;
+}
+
+.overlay h3{
+    color: black;
+  
+    
 }

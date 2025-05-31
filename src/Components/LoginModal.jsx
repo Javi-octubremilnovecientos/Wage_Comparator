@@ -6,6 +6,7 @@ export const LoginModal = () => {
         <div className="overlay">
             <h3>Sign In</h3>
         </div>
+        <button className="close">X</button>
         <form action="">
             <label htmlFor="">username</label>
             <input type="text" />
