@@ -1,7 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../Styles/mainForm.css";
 import { surveys } from "../Mocks/Survey";
+
+import { useDispatch,useSelector } from 'react-redux'
+import { sendForm } from '../Store/Slices/Slice'
+import { useConsult } from "../hooks/useConsult";
+
+
 export const MainForm = () => {
+  const grafica = useSelector((state)=> state.sendForm)
+  const dispatch = useDispatch()
+
+  const  consultar = useConsult()
   const [formNo, setformNo] = useState(0);
   const [inputNo, setinputNo] = useState(0);
   const [form, setform] = useState(surveys[formNo]);
@@ -15,8 +25,10 @@ const HandleSubmit = (e) => {
   for (let [key, value] of formData.entries()) {
        values[key] = value;
     }
-    console.log(values)
-// Ahora sí imprime los valores
+  
+    dispatch(sendForm({values}))
+  
+
   setformNo(formNo + 1); // Avanza al siguiente formulario
   setinputNo(0); // Reinicia el inputNo
   formRef.current.reset();
@@ -26,6 +38,7 @@ const HandleSubmit = (e) => {
 
   useEffect(() => {
     setform(surveys[formNo]);
+   console.log(grafica)
   }, [formNo]);
 
   const inputs = Object.values(form);
@@ -46,7 +59,7 @@ const HandleSubmit = (e) => {
         />
       </div>
     ))}
-  <button type="submit">
+  <button type="submit"  >
     Next
   </button>
 </form>
