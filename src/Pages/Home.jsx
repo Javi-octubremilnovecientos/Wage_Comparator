@@ -20,12 +20,9 @@ export const Home = () => {
         {formNo > 0 ? (
           <Firstchart />
         ) : (
-        
-            <h1>
-              Wage <br /> Comparator
-            </h1>
-          
-      
+          <h1>
+            Wage <br /> Comparator
+          </h1>
         )}
       </section>
       <section id="hero">
@@ -33,10 +30,10 @@ export const Home = () => {
           <MainForm currentForm={currentForm} />
         ) : (
           <div className="initialBox">
-          <h3>Lets Start</h3>
-          <div className="initialForm">
-            <Arrow onClick={() => setstarted(true)} />
-          </div>
+            <h3>Lets Start</h3>
+            <div className="initialForm">
+              <Arrow onClick={() => setstarted(true)} />
+            </div>
           </div>
         )}
       </section>

@@ -1,4 +1,4 @@
-import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis, VictoryLabel, VictoryGroup, VictoryScatter, VictoryLegend, Line, VictoryBoxPlot} from "victory";
+import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis, VictoryLabel, VictoryGroup, VictoryScatter, VictoryLegend, Line, VictoryBoxPlot, VictoryPolarAxis} from "victory";
 import { useFirstForm } from "../../Hooks/useFirstForm";
 
 export const Firstchart = () => {
@@ -7,30 +7,44 @@ export const Firstchart = () => {
 
 return (
 
-    <VictoryChart
-  horizontal
-  domainPadding={20}
-  theme={VictoryTheme.clean}
->
+  <VictoryChart
+   width={700}
+   height={200}
+   padding={100}
+   horizontal
+   >
+ <VictoryAxis style={{    
+     axis: { stroke: "none" },         // Oculta la línea del eje
+    ticks: { stroke: "none" },        // Oculta las marcas de los ticks
+    tickLabels: { fill: "none" },     // Oculta las etiquetas de los ticks
+    grid: { stroke: "none" }}}
+    />
+
+
   <VictoryBoxPlot
-    boxWidth={10}
+    boxWidth={45}
+    labels   
+    scale={50}
+    height={900}
+    labelOrientation="bottom"
     data={[
-      { x: 1, y: ["2", "6", "8", "8.7"] }
+      { x: 1, min: 900, median: 1460, max: 3600, q1: 900, q3: 3600 },
     ]}
     style={{
-    
-      min: { stroke: "tomato" },
-      max: { stroke: "orange" },
-      q1: { fill: "tomato" },
+      min: { stroke: "transparent"},
+      max: { stroke: "transparent"},
+      q1: { fill: "orange" },
       q3: { fill: "orange" },
       median: {
-        stroke: "white",
+        stroke: "tomato",
         strokeWidth: 4,
       },
-      minLabels: { fill: "tomato" },
-      maxLabels: { fill: "orange" },
+      medianLabels: { fill: "tomato", fontSize: 32 },
+      minLabels: { fill: "white", fontSize: 32 },
+      maxLabels: { fill: "white", fontSize: 32 },
     }}
   />
+  
 </VictoryChart>
   );
 }
