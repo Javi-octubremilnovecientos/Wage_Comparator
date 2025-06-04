@@ -1,21 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef} from "react";
 import "../Styles/mainForm.css";
-import { surveys } from "../Mocks/Survey";
 
 import { useDispatch} from "react-redux";
-import { sendForm } from "../Store/Slices/Slice";
-import { useConsult } from "../Hooks/useConsult";
+import { sendForm } from "../Store/Slices/formSubmit";
 
 
-export const MainForm = () => {
+export const MainForm = ({currentForm}) => {
+ 
+  const inputs = Object.values(currentForm);
+  
   const dispatch = useDispatch();
-  const [formNo, setformNo] = useState(0);
-  const [inputNo, setinputNo] = useState(0);
-
-  const {consultar} =  useConsult()
-
-  const [form, setform] = useState(surveys[formNo]);
-
+  //const [inputNo, setinputNo] = useState(0);
   const formRef = useRef(null);
 
   const HandleSubmit = (e) => {
@@ -26,38 +21,27 @@ export const MainForm = () => {
       values[key] = value;
     }   
     dispatch(sendForm({values}));
-  
-    setformNo(formNo + 1); // Avanza al siguiente formulario
-    setinputNo(0); // Reinicia el inputNo
+
     formRef.current.reset();
+   };
    
 
-  };
 
-  useEffect(() => {
-    setform(surveys[formNo]);
-   
-    if(formNo > 0){
-     consultar()
-    }
- 
-  }, [formNo]);
 
-  const inputs = Object.values(form);
 
   return (
     <form className="main-form" ref={formRef} onSubmit={HandleSubmit}>
       {inputs &&
         inputs.map((input, i) => (
           <div className="inputController" key={i}>
-            <label htmlFor="">{i <= inputNo ? input : ""}</label>
+            <label htmlFor="">{input}</label>
             <input
               required
               name={input}
               type="text"
-              disabled={i <= inputNo ? false : true}
-              className={i < inputNo ? "" : "disabled"}
-              onClick={() => setinputNo(inputNo + 1)}
+              disabled={false}
+              // className={i < inputNo ? "" : "disabled"}
+              // onClick={() => setinputNo(inputNo + 1)}
             />
           </div>
         ))}

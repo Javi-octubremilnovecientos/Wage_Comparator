@@ -2,7 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 
 
-const initialState = []
+const initialState = {
+   forms:[],
+   formNumber:0
+}
 
 
 
@@ -11,9 +14,8 @@ export const formSlice = createSlice({
    initialState,
    reducers: {
       sendForm: (state, action) => {
-         state.push(action.payload)
-        
-         
+         state.forms.push(action.payload)
+         state.formNumber ++
       }
    }
 })
