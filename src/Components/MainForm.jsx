@@ -1,6 +1,5 @@
-import React, { useRef} from "react";
+import React, { useRef, useState} from "react";
 import "../Styles/mainForm.css";
-
 import { useDispatch} from "react-redux";
 import { sendForm } from "../Store/Slices/formSubmit";
 
@@ -10,7 +9,8 @@ export const MainForm = ({currentForm}) => {
   const inputs = Object.values(currentForm);
   
   const dispatch = useDispatch();
-  //const [inputNo, setinputNo] = useState(0);
+  const [inputNo, setinputNo] = useState(0);
+  
   const formRef = useRef(null);
 
   const HandleSubmit = (e) => {
@@ -25,23 +25,19 @@ export const MainForm = ({currentForm}) => {
     formRef.current.reset();
    };
    
-
-
-
-
-  return (
+ return (
     <form className="main-form" ref={formRef} onSubmit={HandleSubmit}>
-      {inputs &&
+         {inputs &&
         inputs.map((input, i) => (
           <div className="inputController" key={i}>
-            <label htmlFor="">{input}</label>
+            <label htmlFor="">{i <= inputNo ? input : ""}</label>
             <input
-              required
+              requiredAdd commentMore actions
               name={input}
               type="text"
-              disabled={false}
-              // className={i < inputNo ? "" : "disabled"}
-              // onClick={() => setinputNo(inputNo + 1)}
+              disabled={i <= inputNo ? false : true}
+              className={i < inputNo ? "" : "disabled"}
+              onClick={() => setinputNo(inputNo + 1)}
             />
           </div>
         ))}

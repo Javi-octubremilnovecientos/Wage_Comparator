@@ -9,7 +9,7 @@ const initialState = {
 
 
 
-export const formSlice = createSlice({
+export const formSubmit = createSlice({
    name: "sendForm",
    initialState,
    reducers: {
@@ -20,5 +20,5 @@ export const formSlice = createSlice({
    }
 })
 
-export const { sendForm } = formSlice.actions
-export default formSlice.reducer
+export const { sendForm } = formSubmit.actions
+export default formSubmit.reducer
