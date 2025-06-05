@@ -43,7 +43,7 @@ return (
       horizontal
 
       data={[
-        { x: "Spain", y: [0,  1000, toNumber ,3000, 5000] }
+        { x: "Spain", y: [0,  1000, toNumber , 5000] }
       ]}
     />
 
