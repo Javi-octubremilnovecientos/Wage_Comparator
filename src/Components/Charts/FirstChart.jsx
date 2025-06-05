@@ -1,51 +1,53 @@
-import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis, VictoryLabel, VictoryGroup, VictoryScatter, VictoryLegend, Line, VictoryBoxPlot, VictoryPolarAxis} from "victory";
-import { useFirstForm } from "../../Hooks/useFirstForm";
+import { VictoryChart, VictoryTheme, VictoryAxis, VictoryLabel, VictoryBoxPlot} from "victory";
+ import { useFirstForm } from "../../Hooks/useFirstForm";
 
 export const Firstchart = () => {
  
-// const{media} = useFirstForm()
+ const{media} = useFirstForm()
 
+const mediaRedonda =  (media).toFixed(2);
+const toNumber = Number(mediaRedonda)
+ console.log(toNumber)
 return (
-
   <VictoryChart
-   width={700}
-   height={200}
-   padding={100}
-   horizontal
-   >
- <VictoryAxis style={{    
-     axis: { stroke: "none" },         // Oculta la línea del eje
-    ticks: { stroke: "none" },        // Oculta las marcas de los ticks
-    tickLabels: { fill: "none" },     // Oculta las etiquetas de los ticks
-    grid: { stroke: "none" }}}
+    theme={VictoryTheme.clean}
+    height={430} // Aumenta la altura de la gráfica
+    padding={80}
+    width={500}
+  >
+    <VictoryLabel
+      text="Salario medio de Veterianrios en España"
+      x={225}
+      y={30}
+      style={[{ fill: "#f0f8ff", fontSize:23}]}
+      textAnchor="middle"
+    />
+    <VictoryAxis
+      dependentAxis
+      style={{
+        axis: { stroke: "#f0f8ff" },
+        tickLabels: { fill: "#f0f8ff", fontSize: 20 },
+        grid: { stroke: "#f0f8ff", opacity: 0.2 }
+      }}
+    />
+    <VictoryAxis
+      crossAxis
+      tickValues={["Spain"]}
+      style={{
+        axis: { stroke: "#f0f8ff" },
+        tickLabels: { fill: "#f0f8ff", fontSize: 20, fontWeight:500 }
+      }}
+    />
+    <VictoryBoxPlot
+      boxWidth={24}
+      horizontal
+
+      data={[
+        { x: "Spain", y: [0,  1000, toNumber ,3000, 5000] }
+      ]}
     />
 
-
-  <VictoryBoxPlot
-    boxWidth={45}
-    labels   
-    scale={50}
-    height={900}
-    labelOrientation="bottom"
-    data={[
-      { x: 1, min: 900, median: 1460, max: 3600, q1: 900, q3: 3600 },
-    ]}
-    style={{
-      min: { stroke: "transparent"},
-      max: { stroke: "transparent"},
-      q1: { fill: "orange" },
-      q3: { fill: "orange" },
-      median: {
-        stroke: "tomato",
-        strokeWidth: 4,
-      },
-      medianLabels: { fill: "tomato", fontSize: 32 },
-      minLabels: { fill: "white", fontSize: 32 },
-      maxLabels: { fill: "white", fontSize: 32 },
-    }}
-  />
-  
-</VictoryChart>
-  );
+  </VictoryChart>
+)
 }
 

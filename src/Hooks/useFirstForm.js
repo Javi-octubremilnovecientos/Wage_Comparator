@@ -9,7 +9,7 @@ export const useFirstForm = () => {
   const firstForm = useSelector((state) => state.sendForm.forms[0]);
   const datos = Survey;
 
-
+   console.log(firstForm)
     
   const europeos = datos.filter((dato) => dato.COUNTRY.includes(firstForm.values.País));
 
