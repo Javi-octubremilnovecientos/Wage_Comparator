@@ -50,3 +50,10 @@ h1 {
   backdrop-filter: blur(2px);
   border-radius: 6px;
 }
+
+#comparar{
+  background-color:#8BACFF;
+  border: none;
+  padding: 4px;
+  border-radius: 6px;
+}

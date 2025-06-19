@@ -10,8 +10,6 @@ import { useSelector } from "react-redux";
 export const Home = () => {
   const [started, setstarted] = useState(false);
 
-
-
   const formNo = useSelector((state) => state.sendForm.formNumber);
   const currentForm = surveys[formNo];
   // const [open, setopen] = useState(false)
@@ -21,7 +19,7 @@ export const Home = () => {
       {/* <LoginModal/> */}
       <section id="intro">
         {formNo > 0 ? (
-          <Firstchart/>
+          <Firstchart />
         ) : (
           <h1>
             Wage <br /> Comparator

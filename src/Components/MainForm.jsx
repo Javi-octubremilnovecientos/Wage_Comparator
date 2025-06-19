@@ -6,21 +6,19 @@ import { sendForm } from "../Store/Slices/formSubmit";
 
 export const MainForm = ({currentForm}) => {
  
-  const inputs = Object.values(currentForm);
-  
-  const dispatch = useDispatch();
   const [inputNo, setinputNo] = useState(0);
+  
+  const inputs = Object.values(currentForm);
+  const dispatch = useDispatch();
   
   const formRef = useRef(null);
 
   const HandleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const values = {};
-    for (let [key, value] of formData.entries()) {
-      values[key] = value;
-    }   
-    dispatch(sendForm({values}));
+    const values =  Object.fromEntries(formData);
+ 
+    dispatch(sendForm(values));
 
     formRef.current.reset();
    };
@@ -32,7 +30,7 @@ export const MainForm = ({currentForm}) => {
           <div className="inputController" key={i}>
             <label htmlFor="">{i <= inputNo ? input : ""}</label>
             <input
-              requiredAdd commentMore actions
+              required={true}
               name={input}
               type="text"
               disabled={i <= inputNo ? false : true}

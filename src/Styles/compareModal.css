@@ -1,0 +1,52 @@
+.compare-modal{
+    position: absolute;
+    padding: 7%;
+    box-sizing: border-box;
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    z-index: 50;
+    height: 40%;
+    top:13%;
+    width: 88%;
+    border-radius: 6px;
+  background-color: #fafafa2d;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0px 0px 39px 12px rgba(#597bff)
+}
+.compare-modal form{
+    margin-top: 12%;;
+    height: 90%;
+    width: 79%;
+    display: flex;
+   
+    flex-direction: column;
+}
+.compare-modal button{
+ background-color:#8BACFF;
+  border: none;
+  padding: 4px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px rgba(26, 15, 15, 0.197);
+}
+.compare-modal select{
+  
+   margin-top: 7%;
+   background-color: #8BACFF;
+   border: none;
+   border-radius: 6px 6px 0px 0px;
+   height: 18%;
+   }
+
+.compare-modal select:focus {
+  outline: none;        
+  box-shadow: none;   
+  border-bottom: 2px solid white;
+}
+.compare-modal label {
+   margin-top: 7%;
+   
+}

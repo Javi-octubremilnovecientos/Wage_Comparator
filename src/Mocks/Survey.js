@@ -2,20 +2,19 @@ export const surveys = [
   {
     label1: "Profesión",
     label2: "Puesto",
-    label3: "Situación laboral",
     label4: "País",
-    label5: "Comunidad Autónoma"
+    label5: "Salario"
   },
   {
     label1: "Sexo",
-    label2: "Nivel Educativo",
-    label3: "Experiencia"
+    label2: "Estudios",
+    label4: "Tipo de Contrato"
   },
   {
     label1: "Sector",
-    label2: "Tamaño empresa",
     label3: "Industria",
-    label4: "Tipo de Contrato"
+    label2: "TamañoEmpresa",
+  
   },
   {
     label1: "Último salario",
