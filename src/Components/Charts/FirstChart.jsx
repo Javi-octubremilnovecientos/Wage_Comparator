@@ -5,23 +5,27 @@ import {
   VictoryLabel,
   VictoryBoxPlot,
 } from "victory";
+
+
+import {  useState } from "react";
+import { CompareModal } from "../CompareModal";
+import { useSelector } from "react-redux";
 import { useSendForm } from "../../Hooks/useFirstForm";
 
-import { useState } from "react";
-import { CompareModal } from "../CompareModal";
 
 export const Firstchart = () => {
-  const { media, currentForm, higerWage, lowerWage } = useSendForm();
+  
+
+  const countries = useSelector((state)=>state.sendForm.forms)
+
+  
+  useSendForm()
+  
+  const results = useSelector((state)=> state.filterForm)
   const [compar, setcompare] = useState(false);
-  
-  const mediaRedonda = media.toFixed(2);
-  const minRedonda = lowerWage.toFixed(2)
-  const maxRedonda = higerWage.toFixed(2)
-  const toNumber = Number(mediaRedonda);
-  const minToNumber = Number(minRedonda)
-  const maxToNumber = Number(maxRedonda)
-  
-  console.log(currentForm, toNumber,  lowerWage, higerWage);
+
+  console.log(countries,results)
+
 
   return (
     <>
@@ -33,7 +37,7 @@ export const Firstchart = () => {
         width={500}
       >
         <VictoryLabel
-          text={`Salario medio de ${currentForm.Profesión} en ${currentForm.País}`}
+          text={results? `Salario medio de ${countries[0].Profesión} en ${countries[0].País}`: ""}
           x={225}
           y={30}
           style={[{ fill: "#f0f8ff", fontSize: 23 }]}
@@ -47,9 +51,12 @@ export const Firstchart = () => {
             grid: { stroke: "#f0f8ff", opacity: 0.2 },
           }}
         />
+       
         <VictoryAxis
           crossAxis
-          tickValues={[`${currentForm.País}`]}
+          tickValues={countries && countries.map((count)=>{
+           return count.País
+          } )}
           style={{
             axis: { stroke: "#f0f8ff" },
             tickLabels: { fill: "#f0f8ff", fontSize: 20, fontWeight: 500 },
@@ -58,7 +65,13 @@ export const Firstchart = () => {
         <VictoryBoxPlot
           boxWidth={24}
           horizontal
-          data={[{ x: `${currentForm.País}`, y: [0, minToNumber, toNumber, maxToNumber, 9000] }]}
+          data={
+          results && results.map((result)=>{
+          return { 
+          x: result.País,
+          y: [0, result.lowerWage, result.media, result.higherWage, 9000] }
+         })
+              }
         />
       </VictoryChart>
       <button id="comparar" onClick={() => setcompare(true)}>

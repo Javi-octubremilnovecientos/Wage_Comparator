@@ -1,12 +1,15 @@
 import React, { useRef, useState} from "react";
 import "../Styles/mainForm.css";
 import { useDispatch} from "react-redux";
-import { sendForm } from "../Store/Slices/formSubmit";
+import {  sendForm } from "../Store/Slices/formSubmit";
+import { useSelector } from "react-redux";
+
 
 
 export const MainForm = ({currentForm}) => {
  
   const [inputNo, setinputNo] = useState(0);
+  const formNumb = useSelector((state)=>state.sendForm.formNumber)
   
   const inputs = Object.values(currentForm);
   const dispatch = useDispatch();
@@ -18,9 +21,9 @@ export const MainForm = ({currentForm}) => {
     const formData = new FormData(e.target);
     const values =  Object.fromEntries(formData);
  
-    dispatch(sendForm(values));
+    dispatch(sendForm({type:formNumb,payload:values}));
 
-    formRef.current.reset();
+   formRef.current.reset();
    };
    
  return (
