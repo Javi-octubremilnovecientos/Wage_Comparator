@@ -22,11 +22,12 @@
     height: 90%;
     width: 79%;
     display: flex;
-   
+    justify-content: space-around;
     flex-direction: column;
 }
 .compare-modal button{
  background-color:#8BACFF;
+ margin-top: 20px;
   border: none;
   padding: 4px;
   border-radius: 6px;

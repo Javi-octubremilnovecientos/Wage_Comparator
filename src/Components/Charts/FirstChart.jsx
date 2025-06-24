@@ -6,27 +6,29 @@ import {
   VictoryBoxPlot,
 } from "victory";
 
-
-import {  useState } from "react";
-import { CompareModal } from "../CompareModal";
 import { useSelector } from "react-redux";
-import { useSendForm } from "../../Hooks/useFirstForm";
+import { useEffect, useState } from "react";
+import { CompareModal } from "../CompareModal";
+import { useDispatchFilter } from "../../Hooks/useSendForm";
 
 
 export const Firstchart = () => {
   
 
+  const [compar, setcompare] = useState(false);
   const countries = useSelector((state)=>state.sendForm.forms)
 
-  
-  useSendForm()
+const dispatchFilter = useDispatchFilter();
+
+useEffect(() => {
+  dispatchFilter();
+}, [countries]);
+
+
   
   const results = useSelector((state)=> state.filterForm)
-  const [compar, setcompare] = useState(false);
 
-  console.log(countries,results)
-
-
+  console.log( countries,results)
   return (
     <>
       {compar ? <CompareModal close={setcompare} /> : " "}
@@ -35,6 +37,7 @@ export const Firstchart = () => {
         height={430} // Aumenta la altura de la gráfica
         padding={69}
         width={500}
+          
       >
         <VictoryLabel
           text={results? `Salario medio de ${countries[0].Profesión} en ${countries[0].País}`: ""}

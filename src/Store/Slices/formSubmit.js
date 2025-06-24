@@ -10,14 +10,20 @@ export const formSubmit = createSlice({
   initialState,
   reducers: {
     sendForm: (state, action) => {
-      if (action.payload.type === 0 || action.payload.type === "add") {
-        state.forms = [...state.forms, action.payload.payload];
-      } else {
-        state.forms.map((form) => {
-          return { ...form, ...action.payload.payload };
-        });
+      switch (action.payload.type) {
+        case 0:
+          state.forms = [...state.forms, action.payload.payload];
+          state.formNumber++;
+          break;
+        case "add":
+          state.forms = [...state.forms, action.payload.payload];
+          break;
+        default:
+          state.forms.map((form) => {
+            return { ...form, ...action.payload.payload };
+          });
+          state.formNumber++;
       }
-      state.formNumber++;
     },
   },
 });
