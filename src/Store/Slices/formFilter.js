@@ -78,9 +78,21 @@ export const formFilter = createSlice({
         lowerWage: lowerWage,
         media: media,
         País: action.payload.payload.País
-      };
+      }
+        if(action.type == 1){
+          console.log("igual a uno")
+          state.push(Values)
+        }else{
+          console.log("mayo a uno")
+         state.map((st)=>{
+          return{...st,...Values}
+        })
+        }
+    
+   
+   
 
-      state.push(Values);
+
     },
   },
 });

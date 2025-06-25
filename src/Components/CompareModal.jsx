@@ -14,7 +14,7 @@ export const CompareModal = ({close}) => {
     const newObject = Object.fromEntries(formData);
     const País = newObject.País;
     const newForm = { ...form, País };
-    console.log(newForm);
+ 
     dispatch(sendForm({ type: "add", payload: newForm }));
     close(false)
   };

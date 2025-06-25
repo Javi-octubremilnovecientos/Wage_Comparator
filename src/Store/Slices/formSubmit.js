@@ -19,9 +19,11 @@ export const formSubmit = createSlice({
           state.forms = [...state.forms, action.payload.payload];
           break;
         default:
-          state.forms.map((form) => {
-            return { ...form, ...action.payload.payload };
+         
+         state.forms = state.forms.map((form) => {
+            return { ...form, ...action.payload.payload};
           });
+         console.log(state.forms)
           state.formNumber++;
       }
     },
