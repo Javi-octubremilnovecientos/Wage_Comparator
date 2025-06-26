@@ -2,12 +2,13 @@
 
 import { configureStore } from "@reduxjs/toolkit"
 import { formSubmit } from "./Slices/formSubmit.js"
-import { formFilter } from "./Slices/formFilter.js"
+import { dispatchFilter } from "./Slices/dispatchFilter.js"
+
 
 
 export const store = configureStore({
-    reducer:{
+    reducer: {
         sendForm: formSubmit.reducer,
-        filterForm: formFilter.reducer
+        dispatchFilter: dispatchFilter.reducer
     }
 })

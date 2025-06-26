@@ -6,25 +6,26 @@ import {
   VictoryBoxPlot,
 } from "victory";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { CompareModal } from "../CompareModal";
-import { useDispatchFilter } from "../../Hooks/useSendForm";
+  import {filterForm} from "../../Store/Slices/dispatchFilter"
+           
 
 export const Firstchart = () => {
   const [compar, setcompare] = useState(false);
-  const countries = useSelector((state) => state.sendForm.forms);
 
-  const dispatchFilter = useDispatchFilter();
+ const forms = useSelector((state) => state.sendForm.forms);
+ const formNumber = useSelector((state) => state.sendForm.formNumber);
 
-  useEffect(() => {
-    dispatchFilter();
+ const dispatch = useDispatch()
 
-  }, [countries]);
+ useEffect(() => {
+    dispatch(filterForm({type:formNumber, payload:forms}))
+  }, [forms]);
 
-  const results = useSelector((state) => state.filterForm);
-
-console.log( results)
+const results = useSelector((state)=> state.dispatchFilter)
+console.log(forms, results)
   return (
     <>
       {compar ? <CompareModal close={setcompare} /> : " "}
@@ -35,10 +36,11 @@ console.log( results)
         width={500}
           domainPadding={80}
       >
+  
         <VictoryLabel
           text={
             results
-              ? `Salario medio de ${countries[0].Profesión} en ${countries[0].País}`
+              ? `Salario medio de ${forms[0].Profesión} en ${forms[0].País}`
               : ""
           }
           x={225}
@@ -63,8 +65,8 @@ console.log( results)
         <VictoryAxis
           crossAxis
           tickValues={
-            countries &&
-            countries.map((count) => {
+            forms &&
+            forms.map((count) => {
               return count.País;
             })
           }
