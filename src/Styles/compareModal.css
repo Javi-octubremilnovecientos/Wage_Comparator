@@ -15,7 +15,7 @@
   background-color: #fafafa2d;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0px 0px 39px 12px rgba(#597bff)
+  box-shadow: 0px 0px 39px 12px rgba(var(--secondary))
 }
 .compare-modal form{
     margin-top: 12%;;
@@ -26,7 +26,7 @@
     flex-direction: column;
 }
 .compare-modal button{
- background-color:#8BACFF;
+ background-color:var(--tertiary);
  margin-top: 20px;
   border: none;
   padding: 4px;
@@ -36,7 +36,7 @@
 .compare-modal select{
   
    margin-top: 7%;
-   background-color: #8BACFF;
+   background-color:var(--tertiary);
    border: none;
    border-radius: 6px 6px 0px 0px;
    height: 18%;

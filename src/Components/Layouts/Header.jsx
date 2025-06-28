@@ -7,16 +7,31 @@ import {
 } from "../../assets/Icons/Icons";
 import "../../Styles/index.css";
 import {Link} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {toggleTheme } from "../../Store/Slices/themeToggler";
+import { useEffect } from "react";
 export const Header = () => {
   const [open, setOpen] = useState(false);
   const [dark, setdark] = useState(false)
+
+
    const handleOpen = ()=>{
     setOpen(!open)
    }
+   
    const handleTheme = ()=>{
-    setdark(!dark)
+      setdark(!dark)
    }
+
+   const dispatch = useDispatch()
   
+     useEffect(() => {
+      
+        dispatch(toggleTheme({payload:dark}))
+     
+     }, [dark])
+     
+
 
   
   return (

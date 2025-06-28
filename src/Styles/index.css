@@ -6,8 +6,24 @@
   font-weight: normal;
 }
 
+:root{
+--primary: #4478d9;
+--secondary:#546bc8;
+--tertiary:#7bb4ff;
+--cuaternary: #fafafa19;
+}
+
+[data-theme="dark"]{
+  --primary: #770c8d;
+  --secondary: #2f0c2f;
+  --tertiary:#77317f;
+}
+
 body {
-  background-image: linear-gradient(140deg, #7bb4ff, #546bc8, #4478d9);
+  background-image: linear-gradient(140deg, var(--tertiary) , var(--secondary), var(--primary));
+  transition: all 800ms;
+  padding-left: 2%;
+
 }
 
 header {
@@ -19,22 +35,24 @@ header {
   padding: 4%;
   box-sizing: border-box;
   justify-content: space-between;   
-  transition:all 300ms;
-   
+
+  z-index: 40;
 }
 nav {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 100%;
-  width: 33%;
-  background-color: #546bc8;
+  top: 12px;
+  right: 14px;
+  height: 160%;
+  width: 43%;
+  background-color:var(--secondary);
+  opacity: 0.9;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: start;
-  padding-left: 9px;
+  padding-left: 13px;
   box-sizing: border-box;
+  border-radius: 6px;
 
 }
 nav button{
@@ -42,21 +60,28 @@ nav button{
     left: 78%;
     background-color:transparent;
     border-color: transparent;
+    font-size: 1.4rem;
+ 
 }
 nav ul {
   list-style: none;
-  text-decoration: none;
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
 }
 a{
  text-decoration: none;
+ font-size: 1.2rem;
  cursor: pointer;
 }
 .theme {
-  width: 59%;
-  height: 40%;
+  width: 55%;
+  height: 35%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -66,7 +91,7 @@ a{
   border: 1px solid rgb(255, 255, 255);
   border-radius: 4px;
   background-color: rgb(235, 235, 235);  
-  
+
 }
 .switch span {
   position: relative;
@@ -76,10 +101,12 @@ a{
   width: 38%;
   background-color: rgb(255, 255, 255);
   border-radius: 4px;
-  box-shadow: 0px 0px 7px rgb(165, 165, 165);
+  box-shadow: 0px 0px 9px rgb(120, 120, 120);
+
 }
 
 .darkTheme {
   left: 62%;  
+  transition: all 800ms;
 
 }

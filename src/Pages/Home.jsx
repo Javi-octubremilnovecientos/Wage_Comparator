@@ -15,7 +15,7 @@ export const Home = () => {
   // const [open, setopen] = useState(false)
 
   return (
-    <main>
+    <main >
       {/* <LoginModal/> */}
       <section id="intro">
         {formNo > 0 ? (

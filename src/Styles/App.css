@@ -1,3 +1,4 @@
+
 main {
   min-height: 100vh;
   display: flex;
@@ -52,7 +53,7 @@ h1 {
 }
 
 #comparar{
-  background-color:#8BACFF;
+  background-color:var(--tertiary);
   border: none;
   padding: 4px;
   border-radius: 6px;

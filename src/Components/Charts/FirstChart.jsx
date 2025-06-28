@@ -9,34 +9,34 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 import { CompareModal } from "../CompareModal";
-  import {filterForm} from "../../Store/Slices/dispatchFilter"
-           
+import { filterForm } from "../../Store/Slices/dispatchFilter";
 
 export const Firstchart = () => {
   const [compar, setcompare] = useState(false);
 
- const forms = useSelector((state) => state.sendForm.forms);
- const formNumber = useSelector((state) => state.sendForm.formNumber);
+  const forms = useSelector((state) => state.sendForm.forms);
+  const theme = useSelector((state) => state.themeToggler);
 
- const dispatch = useDispatch()
+  const formNumber = useSelector((state) => state.sendForm.formNumber);
 
- useEffect(() => {
-    dispatch(filterForm({type:formNumber, payload:forms}))
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+    dispatch(filterForm({ type: formNumber, payload: forms }));
   }, [forms]);
 
-const results = useSelector((state)=> state.dispatchFilter)
-console.log(forms, results)
+  const results = useSelector((state) => state.dispatchFilter);
+
   return (
     <>
       {compar ? <CompareModal close={setcompare} /> : " "}
       <VictoryChart
         theme={VictoryTheme.clean}
-        height={430} // Aumenta la altura de la gráfica
-        padding={80}
-        width={500}
-          domainPadding={80}
+        height={450}
+        padding={64}
+        width={470}
+        domainPadding={80}
       >
-  
         <VictoryLabel
           text={
             results
@@ -55,13 +55,11 @@ console.log(forms, results)
             tickLabels: {
               fill: "#f0f8ff",
               fontSize: 20,
-              textAnchor: "center", // Align text to the end for better readability
+              textAnchor: "center",
             },
             grid: { stroke: "#f0f8ff", opacity: 0.2 },
           }}
-          
         />
-
         <VictoryAxis
           crossAxis
           tickValues={
@@ -74,17 +72,18 @@ console.log(forms, results)
             axis: { stroke: "#f0f8ff" },
             tickLabels: {
               fill: "#f0f8ff",
-              fontSize: 20,
-              fontWeight: 500,
-              angle: -45,
+              fontSize: 17,
+              fontWeight: 400,
+              angle: -58,
             },
           }}
           domain={200}
         />
         <VictoryBoxPlot
-          boxWidth={24}
+          boxWidth={22}
           horizontal
-          domain={200}
+          whiskerWidth={19}
+          domain={100}
           data={
             results &&
             results.map((result) => {
@@ -94,6 +93,46 @@ console.log(forms, results)
               };
             })
           }
+          q3Labels
+          q3LabelComponent={
+            <VictoryLabel
+              dx={29}
+              dy={15}
+              style={{ fill: "white"}}
+              angle={45}
+            />
+          }
+          q1Labels
+          q1LabelComponent={
+            <VictoryLabel
+              dx={23}
+              dy={15}
+              style={{ fill:"white"}}
+              angle={45}
+            />
+          }
+          medianLabels
+          medianLabelComponent={
+            <VictoryLabel dx={49} 
+            dy={10} 
+            textAnchor="middle"
+            angle={45}
+            style={{fill:"white"}} />
+          }
+          style={{
+            min: { stroke: "white", strokeWidth: 3 },
+            max: { stroke: "white", strokeWidth: 3 },
+            q1: {fill: theme ? "#801197" : "#4478d9"  , fillOpacity: 0.9 },
+            q3: { fill: theme ? "#77317f" : "#7bb4ff", fillOpacity: 0.9 },
+            median: { stroke: "orange", strokeWidth: 4 },
+            box: {
+              
+              fillOpacity: 0.9,
+              stroke: "#1976d2",
+              strokeWidth: 19,
+            },
+            labels: { fill: "#f0f8ff", fontSize: 26 },
+          }}
         />
       </VictoryChart>
       <button id="comparar" onClick={() => setcompare(true)}>

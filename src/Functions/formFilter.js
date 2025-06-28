@@ -15,8 +15,21 @@ export const formFilter = (form, formNumber) => {
     return isco.startsWith(firstLetters);
   });
 
-  const wages = currentOccupation.filter((con) => con.WAGEGR0NAT < 9000);
-  const firstRange = wages.map((wag) => wag.WAGEGR0NAT);
+  const wages = currentOccupation.filter((con) =>{
+   if(con.COUNTRY.includes("Bulgaria" | "Romania" | "Czech Republic" | "United Kingdom" | "Denmark" | "Switzerland" | "Sweeden" | "Poland")){
+     return con.WAGEGR0CONV < 9000  &&  con.WAGEGR0CONV > 300
+     }else{
+    return  con.WAGEGR0NAT < 9000 && con.WAGEGR0NAT > 300
+   } 
+
+  })
+  const firstRange = wages.map((wag) =>{
+  if(wag.COUNTRY.includes("Bulgaria" | "Romania" | "Czech Republic" | "United Kingdom" | "Denmark" | "Switzerland" | "Sweeden" | "Poland")){
+     return wag.WAGEGR0CONV 
+   }else{
+    return  wag.WAGEGR0NAT 
+   } 
+  });
 
   let wageRange = [];
 
