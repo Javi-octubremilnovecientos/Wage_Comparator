@@ -26,7 +26,7 @@ export const Firstchart = () => {
   }, [forms]);
 
   const results = useSelector((state) => state.dispatchFilter);
-
+ console.log(results)
   return (
     <>
       {compar ? <CompareModal close={setcompare} /> : " "}
@@ -96,8 +96,8 @@ export const Firstchart = () => {
           q3Labels
           q3LabelComponent={
             <VictoryLabel
-              dx={29}
-              dy={15}
+              dx={32}
+              dy={19}
               style={{ fill: "white"}}
               angle={45}
             />
@@ -105,16 +105,17 @@ export const Firstchart = () => {
           q1Labels
           q1LabelComponent={
             <VictoryLabel
-              dx={23}
-              dy={15}
+              dx={28}
+              dy={17}
               style={{ fill:"white"}}
               angle={45}
             />
           }
           medianLabels
           medianLabelComponent={
-            <VictoryLabel dx={49} 
-            dy={10} 
+            <VictoryLabel 
+            dx={30} 
+            dy={22} 
             textAnchor="middle"
             angle={45}
             style={{fill:"white"}} />

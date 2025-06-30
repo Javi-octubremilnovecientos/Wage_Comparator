@@ -65,8 +65,7 @@ export const formFilter = (form, formNumber) => {
       break;
   }
 
-  const Media =
-    wageRange.reduce((accum, curr) => accum + curr, 0) / wageRange.length;
+  const Media = wageRange.reduce((accum, curr) => accum + curr, 0) / wageRange.length;
 
   const higherWage = Math.max(...firstRange).toFixed(2);
   const lowerWage = Math.min(...firstRange).toFixed(2);

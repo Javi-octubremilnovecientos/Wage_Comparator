@@ -3,8 +3,9 @@ import { MainForm } from "../Components/MainForm";
 import { Firstchart } from "../Components/Charts/FirstChart";
 import { Arrow } from "../assets/Icons/Icons";
 import { surveys } from "../Mocks/Survey";
-// import { LoginModal } from "../Components/LoginModal";
+import { LoginModal } from "../Components/LoginModal";
 import { useSelector } from "react-redux";
+
 
 
 export const Home = () => {
@@ -12,11 +13,12 @@ export const Home = () => {
 
   const formNo = useSelector((state) => state.sendForm.formNumber);
   const currentForm = surveys[formNo];
-  // const [open, setopen] = useState(false)
+ const modalOpen= useSelector((state)=> state.userAccess.modal)
 
   return (
     <main >
-      {/* <LoginModal/> */}
+      {modalOpen? <LoginModal/>  :  "" }
+    
       <section id="intro">
         {formNo > 0 ? (
           <Firstchart />

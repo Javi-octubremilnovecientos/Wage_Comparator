@@ -14,8 +14,8 @@ export const themeToggler = createSlice({
        body.setAttribute("data-theme", "dark")
        return true
       }else{
-          body.removeAttribute("data-theme")
-          return false
+        body.removeAttribute("data-theme")
+        return false
       }
      }
     }
