@@ -45,7 +45,7 @@ export const formFilter = (form, formNumber) => {
         .map((wag) => wag.WAGEGR0NAT);
 
       break;
-    case 3:
+    case 3 | 4:
       wageRange = wages
         .filter((con) => con.GENDER === form.Sexo)
         .filter((con) => con.EDUISCED === form.Estudios)
@@ -54,15 +54,18 @@ export const formFilter = (form, formNumber) => {
         .map((wag) => wag.WAGEGR0NAT);
 
       break;
-    case 4:
-      wageRange = wages
-        .filter((con) => con.GENDER === form.Sexo)
-        .filter((con) => con.EDUISCED === form.Estudios)
-        .filter((con) => con.FIRMPRI === form.Sector)
-        .filter((con) => con.NACE2002 === form.Industria)
-        .map((wag) => wag.WAGEGR0NAT);
+      default:
+        wageRange = firstRange;
+       
+    // case 4:
+    //   wageRange = wages
+    //     .filter((con) => con.GENDER === form.Sexo)
+    //     .filter((con) => con.EDUISCED === form.Estudios)
+    //     .filter((con) => con.FIRMPRI === form.Sector)
+    //     .filter((con) => con.NACE2002 === form.Industria)
+    //     .map((wag) => wag.WAGEGR0NAT);
 
-      break;
+    //   break;
   }
 
   const Media = wageRange.reduce((accum, curr) => accum + curr, 0) / wageRange.length;

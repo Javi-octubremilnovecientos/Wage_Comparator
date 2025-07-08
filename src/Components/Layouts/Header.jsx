@@ -28,7 +28,6 @@ export const Header = () => {
     dispatch(displayModal)
   }
 
-
   const handleTheme = () => {
     setdark(!dark);
   };

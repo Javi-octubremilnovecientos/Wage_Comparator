@@ -88,8 +88,8 @@ export const Firstchart = () => {
             results &&
             results.map((result) => {
               return {
-                x: result.País,
-                y: [0, result.lowerWage, result.media, result.higherWage, 9000],
+                x: result.País ,
+                y: [0,result.lowerWage , result.media, result.higherWage, 9000],
               };
             })
           }
