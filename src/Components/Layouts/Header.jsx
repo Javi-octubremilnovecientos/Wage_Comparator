@@ -11,28 +11,27 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../Store/Slices/themeToggler";
 import { useEffect } from "react";
 import { displayModal } from "../../Store/Slices/userAccess";
+
 export const Header = () => {
   const [open, setOpen] = useState(false);
 
   const [dark, setdark] = useState(false);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const modalOpen= useSelector((state)=>{ state.userAccess.modal})
 
+ const Logged = useSelector((state)=> state.userAccess.login)
   const handleOpen = () => {
     setOpen(!open);
   };
 
-  const handleLogging = ()=>{
-    dispatch(displayModal)
-  }
+  const handleLogging = () => {
+    dispatch(displayModal());
+  };
 
   const handleTheme = () => {
     setdark(!dark);
   };
-
- 
 
   useEffect(() => {
     dispatch(toggleTheme({ payload: dark }));
@@ -40,11 +39,24 @@ export const Header = () => {
 
   return (
     <header>
-  {modalOpen ? (
-    <Link to={"/Profile"}><UserIcon/></Link>
-  ) : (
-    <UserIcon onClick={handleLogging}/> 
-  )}
+      {Logged ? (
+        <Link to={"/Profile"}>
+          <UserIcon />
+        </Link>
+      ) : (
+        <button
+          onClick={handleLogging}
+          style={{
+            background: "none",
+            border: "none",
+            padding: 0,
+            margin:0,
+            cursor: "pointer",
+          }}
+        >
+          <UserIcon />
+        </button>
+      )}
 
       {open ? (
         <nav>

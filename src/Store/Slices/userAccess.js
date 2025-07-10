@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   login: false,
   modal: false,
-  register: false,
+  register:[],
 };
 
 export const userAccess = createSlice({
@@ -11,17 +11,16 @@ export const userAccess = createSlice({
   initialState,
   reducers: {
     Login: (state, action) => {
-      state.login = action.payload;
+      state.login = !state.login;
     },
     Register: (state, action) => {
-      state.register = action.payload;
+     state.register = [...state.register,action.payload.payload]
+     console.log(state.register)
     },
-    displayModal: (state, action) => {
-      if(state.modal){
-        return false
-      }else{
-       return true
-      }
+    displayModal: (state) => {
+     
+    state.login ?  ""  : state.modal = !state.modal;
+     
     },
   },
 });

@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
 import "../Styles/LoginModal.css";
 import { useDispatch } from "react-redux";
-import { displayModal } from "../Store/Slices/userAccess";
+import { displayModal, Register } from "../Store/Slices/userAccess";
+import getRandomNumber from "../Utils/randomNumber";
+
 
 export const LoginModal = () => {
   const dispatch = useDispatch();
@@ -19,8 +21,21 @@ export const LoginModal = () => {
   };
 
   const handleClose = () => {
-    dispatch(displayModal);
+    dispatch(displayModal());
   };
+
+  const register = (e)=>{
+     e.preventDefault()
+    const newUser = new FormData(e.target)
+    const objetctFromUser = Object.fromEntries(newUser)
+    if(objetctFromUser.password != objetctFromUser.repeatpass){
+      alert("las contraseñas no coinciden")
+    }
+    const id = getRandomNumber()
+    objetctFromUser.id = id
+    dispatch(Register({payload:objetctFromUser}))
+    
+  }
 
   return (
     <div className="LoginModal">
@@ -40,16 +55,16 @@ export const LoginModal = () => {
         </form>
       </div>
       <div className="formDos">
-        <form action="">
+        <form action="" onSubmit={register}>
           <label htmlFor="">e-mail</label>
-          <input type="text" />
+          <input type="email" name="email" />
           <label htmlFor="">username</label>
-          <input type="text" />
+          <input type="text" name="username" />
           <label htmlFor="">password</label>
-          <input type="text" />
+          <input type="password" name="password" />
           <label htmlFor="">repeat password</label>
-          <input type="text" />
-          <button>Sign In</button>
+          <input type="password" name="repeatpass"/>
+          <button type="submit">Sign In</button>
         </form>
       </div>
     </div>

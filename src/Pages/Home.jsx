@@ -15,9 +15,10 @@ export const Home = () => {
   const currentForm = surveys[formNo];
  const modalOpen= useSelector((state)=> state.userAccess.modal)
 
+ console.log(modalOpen)
   return (
     <main >
-      {modalOpen? <LoginModal/>  :  "" }
+      {modalOpen ? <LoginModal/>  :  "" }
     
       <section id="intro">
         {formNo > 0 ? (

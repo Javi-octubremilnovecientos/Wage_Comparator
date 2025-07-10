@@ -33,10 +33,12 @@ header {
   height: 15%;
   display: flex;
   padding: 4%;
+  padding-top: 9%;
   box-sizing: border-box;
-  justify-content: space-between;   
-
-  z-index: 40;
+  justify-content: space-between;
+  align-items: start;
+  
+  z-index: 10;
 }
 nav {
   position: absolute;
